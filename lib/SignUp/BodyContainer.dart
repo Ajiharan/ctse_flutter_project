@@ -7,6 +7,7 @@ import 'package:ctse/common/rounded_buttons.dart';
 import 'package:ctse/common/socialIcons.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -48,8 +49,8 @@ class _BodyContainerState extends State<BodyContainer> {
                     Icons.check,
                     color: Colors.white,
                   )),
-              // Navigator.of(context)
-              //     .push(MaterialPageRoute(builder: (context) => HomePage()))
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => LoginScreen()))
             })
         .catchError((onError) {
       func();
@@ -163,9 +164,11 @@ class _BodyContainerState extends State<BodyContainer> {
                 press: () {
                   if (formKey.currentState!.validate()) {
                     formKey.currentState!.save();
+                    EasyLoading.show(status: 'loading...');
                     // print(_emailAddress);
                     FocusScope.of(context).unfocus();
                     signUp(context, () {
+                      EasyLoading.dismiss();
                       formKey.currentState!.reset();
                       passController.clear();
                     });

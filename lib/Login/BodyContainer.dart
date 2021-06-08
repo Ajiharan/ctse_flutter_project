@@ -1,8 +1,10 @@
 import 'package:ctse/SignUp/SignUpScreen.dart';
+import 'package:ctse/Student/StudentHome.dart';
 import 'package:ctse/common/RoundedInputFormField.dart';
 import 'package:ctse/common/RoundedPasswordField.dart';
 import 'package:ctse/common/rounded_buttons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'AlreadyAccountContainer.dart';
@@ -75,8 +77,14 @@ class _BodyContainerState extends State<BodyContainer> {
                     Icons.check,
                     color: Colors.white,
                   )),
-              // Navigator.of(context)
-              //     .push(MaterialPageRoute(builder: (context) => HomePage()))
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return StudentHome();
+                  },
+                ),
+              )
             })
         .catchError((onError) {
       func();
@@ -139,10 +147,12 @@ class _BodyContainerState extends State<BodyContainer> {
                 press: () {
                   if (formKey.currentState!.validate()) {
                     formKey.currentState!.save();
+                    EasyLoading.show(status: 'loading...');
                     // print(_emailAddress);
                     FocusScope.of(context).unfocus();
                     signIn(context, () {
                       formKey.currentState!.reset();
+                      EasyLoading.dismiss();
                     });
                   }
                 },
