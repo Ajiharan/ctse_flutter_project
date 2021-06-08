@@ -1,3 +1,4 @@
+import 'package:ctse/Home/HomeScreen.dart';
 import 'package:ctse/Login/SignInScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ class StudentHome extends StatelessWidget {
       context,
       MaterialPageRoute(
         builder: (context) {
-          return LoginScreen();
+          return HomeScreen();
         },
       ),
     );

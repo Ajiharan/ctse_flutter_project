@@ -128,7 +128,7 @@ class _BodyContainerState extends State<BodyContainer> {
               ),
               SizedBox(height: size.height * 0.03),
               SvgPicture.asset(
-                "images/u2.svg",
+                "images/s1.svg",
                 height: size.height * 0.35,
               ),
               SizedBox(height: size.height * 0.03),

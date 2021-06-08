@@ -5,6 +5,7 @@ import 'package:ctse/common/rounded_buttons.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 import '../colorConstraint.dart';
 
@@ -37,7 +38,8 @@ class BodyContainer extends StatelessWidget {
           children: <Widget>[
             Text(
               "STUDENT EDUCATION SYSTEM",
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  fontWeight: FontWeight.bold, color: HexColor('#f44336')),
             ),
             SizedBox(height: size.height * 0.05),
             SvgPicture.asset(
