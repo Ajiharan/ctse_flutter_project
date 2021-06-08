@@ -1,0 +1,13 @@
+import 'package:ctse/Login/BodyContainer.dart';
+import 'package:flutter/material.dart';
+
+class LoginScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: GestureDetector(
+          child: BodyContainer(),
+          onTap: () => FocusScope.of(context).unfocus()),
+    );
+  }
+}

@@ -1,4 +1,5 @@
 import 'package:ctse/Home/Background.dart';
+import 'package:ctse/Login/SignInScreen.dart';
 import 'package:ctse/common/rounded_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -30,8 +31,8 @@ class BodyContainer extends StatelessWidget {
             RoundedButton(
                 text: 'Login',
                 press: () {
-                  // Navigator.of(context).push(
-                  //     MaterialPageRoute(builder: (context) => LoginScreen()));
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => LoginScreen()));
                 }),
             SizedBox(height: size.height * 0.01),
             RoundedButton(
