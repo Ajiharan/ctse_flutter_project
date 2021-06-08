@@ -1,5 +1,6 @@
 import 'package:ctse/Login/AlreadyAccountContainer.dart';
 import 'package:ctse/Login/SignInScreen.dart';
+import 'package:ctse/Student/StudentHome.dart';
 import 'package:ctse/common/RoundedInputFormField.dart';
 import 'package:ctse/common/RoundedPasswordField.dart';
 import 'package:ctse/common/divider.dart';
@@ -96,8 +97,22 @@ class _BodyContainerState extends State<BodyContainer> {
     );
   }
 
+  void checkLoginUser(BuildContext context) async {
+    if (await FirebaseAuth.instance.currentUser != null) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) {
+            return StudentHome();
+          },
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    checkLoginUser(context);
     Size size = MediaQuery.of(context).size;
     return Background(
       child: Form(

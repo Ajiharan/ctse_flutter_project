@@ -1,6 +1,8 @@
 import 'package:ctse/Home/Background.dart';
 import 'package:ctse/Login/SignInScreen.dart';
+import 'package:ctse/Student/StudentHome.dart';
 import 'package:ctse/common/rounded_buttons.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -9,8 +11,23 @@ import '../colorConstraint.dart';
 class BodyContainer extends StatelessWidget {
   const BodyContainer({Key? key}) : super(key: key);
 
+  void checkLoginUser(BuildContext context) async {
+    print('check user ${await FirebaseAuth.instance.currentUser}');
+    if (await FirebaseAuth.instance.currentUser != null) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) {
+            return StudentHome();
+          },
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    checkLoginUser(context);
     Size size = MediaQuery.of(context).size;
     return Background(
       key: null,

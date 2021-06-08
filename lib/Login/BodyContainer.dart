@@ -98,8 +98,22 @@ class _BodyContainerState extends State<BodyContainer> {
     });
   }
 
+  void checkLoginUser(BuildContext context) async {
+    if (await FirebaseAuth.instance.currentUser != null) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) {
+            return StudentHome();
+          },
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    checkLoginUser(context);
     Size size = MediaQuery.of(context).size;
     return Background(
       child: SingleChildScrollView(

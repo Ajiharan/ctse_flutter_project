@@ -34,6 +34,8 @@ dependencies:
   flutter_svg: ^0.22.0
   hexcolor: ^2.0.4
   flutter_easyloading: ^3.0.0
+  cloud_firestore: ^2.2.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
