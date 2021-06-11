@@ -100,7 +100,7 @@ class _LectureDataState extends State<LectureData> {
               child: Text(
                 widget.description,
                 style: TextStyle(
-                  color: Colors.redAccent,
+                  color: HexColor('FFEF6E6E'),
                   fontWeight: FontWeight.w500,
                   fontSize: 15,
                   letterSpacing: 2,

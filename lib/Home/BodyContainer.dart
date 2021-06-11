@@ -6,14 +6,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hexcolor/hexcolor.dart';
-
 import '../colorConstraint.dart';
 
 class BodyContainer extends StatelessWidget {
   const BodyContainer({Key? key}) : super(key: key);
 
   void checkLoginUser(BuildContext context) async {
-    print('check user ${await FirebaseAuth.instance.currentUser}');
     if (await FirebaseAuth.instance.currentUser != null) {
       Navigator.push(
         context,

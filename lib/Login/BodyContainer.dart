@@ -1,3 +1,4 @@
+import 'package:ctse/Home/admin_home.dart';
 import 'package:ctse/SignUp/SignUpScreen.dart';
 import 'package:ctse/Student/StudentHome.dart';
 import 'package:ctse/common/RoundedInputFormField.dart';
@@ -77,14 +78,29 @@ class _BodyContainerState extends State<BodyContainer> {
                     Icons.check,
                     color: Colors.white,
                   )),
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return StudentHome();
-                  },
-                ),
-              )
+              print('authUser : ${authUser.user!.email}'),
+              if (authUser.user!.email == 'admin@gmail.com')
+                {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return AdminHomeScreen();
+                      },
+                    ),
+                  )
+                }
+              else
+                {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return StudentHome();
+                      },
+                    ),
+                  )
+                }
             })
         .catchError((onError) {
       func();
