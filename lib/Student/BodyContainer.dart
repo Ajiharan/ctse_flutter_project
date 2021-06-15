@@ -14,7 +14,7 @@ class _BodyContainerState extends State<BodyContainer> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: FirebaseFirestore.instance.collection("modules").snapshots(),
+      stream: FirebaseFirestore.instance.collection("lectures").snapshots(),
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
         return !snapshot.hasData
             ? Center(child: CircularProgressIndicator())
@@ -25,7 +25,7 @@ class _BodyContainerState extends State<BodyContainer> {
                   return LectureData(
                       id: data.id,
                       description: data['description'],
-                      lecture: data['lecture']);
+                      lecture: data['title']);
                 },
               );
       },
