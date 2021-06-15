@@ -53,21 +53,33 @@ class _LectureDataState extends State<LectureData> {
               height: 8,
             ),
             Container(
-              padding: EdgeInsets.all(5),
-              width: MediaQuery.of(context).size.width * 0.8,
-              decoration: BoxDecoration(
-                color: Colors.white,
-              ),
-              child: Text(
-                widget.lecture,
-                style: TextStyle(
-                  color: Colors.redAccent,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 15,
-                  letterSpacing: 2,
+                padding: EdgeInsets.all(5),
+                width: MediaQuery.of(context).size.width * 0.8,
+                decoration: BoxDecoration(
+                  color: Colors.white,
                 ),
-              ),
-            ),
+                child: Row(
+                  children: [
+                    Container(
+                      child: Icon(
+                        Icons.picture_as_pdf,
+                        color: Colors.red,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 8,
+                    ),
+                    Text(
+                      widget.lecture,
+                      style: TextStyle(
+                        color: Colors.redAccent,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 15,
+                        letterSpacing: 2,
+                      ),
+                    ),
+                  ],
+                )),
             SizedBox(
               height: 8,
             ),

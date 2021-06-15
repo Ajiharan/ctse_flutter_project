@@ -115,15 +115,27 @@ class _BodyContainerState extends State<BodyContainer> {
   }
 
   void checkLoginUser(BuildContext context) async {
-    if (await FirebaseAuth.instance.currentUser != null) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) {
-            return StudentHome();
-          },
-        ),
-      );
+    var user = await FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      if (user.email != "admin@gmail.com") {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return StudentHome();
+            },
+          ),
+        );
+      } else {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return AdminHomeScreen();
+            },
+          ),
+        );
+      }
     }
   }
 

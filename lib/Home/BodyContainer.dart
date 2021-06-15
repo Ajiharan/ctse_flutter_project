@@ -1,5 +1,6 @@
 import 'package:ctse/Home/Background.dart';
 import 'package:ctse/Login/SignInScreen.dart';
+import 'package:ctse/SignUp/SignUpScreen.dart';
 import 'package:ctse/Student/StudentHome.dart';
 import 'package:ctse/common/rounded_buttons.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -7,20 +8,33 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hexcolor/hexcolor.dart';
 import '../colorConstraint.dart';
+import 'admin_home.dart';
 
 class BodyContainer extends StatelessWidget {
   const BodyContainer({Key? key}) : super(key: key);
 
   void checkLoginUser(BuildContext context) async {
-    if (await FirebaseAuth.instance.currentUser != null) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) {
-            return StudentHome();
-          },
-        ),
-      );
+    var user = await FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      if (user.email != "admin@gmail.com") {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return StudentHome();
+            },
+          ),
+        );
+      } else {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return AdminHomeScreen();
+            },
+          ),
+        );
+      }
     }
   }
 
@@ -55,8 +69,8 @@ class BodyContainer extends StatelessWidget {
             RoundedButton(
               text: 'Sign up',
               press: () {
-                // Navigator.of(context).push(
-                //     MaterialPageRoute(builder: (context) => SignUpScreen()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => SignUpScreen()));
               },
               color: PrimaryLightColor,
               textColor: Colors.black,
